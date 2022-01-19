@@ -31,17 +31,19 @@ defmodule Hangman.Impl.GameTest do
     end
 
     test "should return game with state :already_used when guessing same letter" do
-      used =
-        MapSet.new()
-        |> MapSet.put("x")
+      game = Game.new()
+      {game, _tally} = Game.make_move(game, "x")
+      assert game.state != :already_used
+      {game, _tally} = Game.make_move(game, "x")
+      assert game.state == :already_used
+    end
 
-      game =
-        "wombat"
-        |> Game.new()
-        |> Map.put(:used, used)
+    test "should record guessed letters" do
+      game = Game.new()
+      {game, _tally} = Game.make_move(game, "x")
+      {game, _tally} = Game.make_move(game, "y")
 
-      {new_game, _tally} = Game.make_move(game, "x")
-      assert %{state: :already_used} = new_game
+      assert game.used == MapSet.new(["y", "x"])
     end
   end
 end

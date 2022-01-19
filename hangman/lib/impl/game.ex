@@ -37,6 +37,8 @@ defmodule Hangman.Impl.Game do
 
   defp accept_guess(game, _guess, _already_used = true), do: %{game | state: :already_used}
 
+  defp accept_guess(game, guess, _already_used = false), do: %{game | used: MapSet.put(game.used, guess)}
+
   defp return_with_tally(game) do
     {game, tally(game)}
   end
