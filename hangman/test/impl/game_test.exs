@@ -6,7 +6,7 @@ defmodule Hangman.Impl.GameTest do
     test "should return game state struct" do
       game = Game.new()
       assert game.turns_left == 7
-      assert game.game_state == :initializing
+      assert game.state == :initializing
       assert length(game.letters) > 0
     end
 
@@ -17,6 +17,18 @@ defmodule Hangman.Impl.GameTest do
     end
   end
 
-  describe "" do
+  describe "make_move/2" do
+    test "should return same game when state is :won or :lost" do
+      for state <- [:won, :lost] do
+        game =
+          "wombat"
+          |> Game.new()
+          |> Map.put(:state, state)
+
+        {new_game, _tally} = Game.make_move(game, "x")
+        assert game == new_game
+      end
+
+    end
   end
 end
