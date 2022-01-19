@@ -28,7 +28,20 @@ defmodule Hangman.Impl.GameTest do
         {new_game, _tally} = Game.make_move(game, "x")
         assert game == new_game
       end
+    end
 
+    test "should return game with state :already_used when guessing same letter" do
+      used =
+        MapSet.new()
+        |> MapSet.put("x")
+
+      game =
+        "wombat"
+        |> Game.new()
+        |> Map.put(:used, used)
+
+      {new_game, _tally} = Game.make_move(game, "x")
+      assert %{state: :already_used} = new_game
     end
   end
 end
