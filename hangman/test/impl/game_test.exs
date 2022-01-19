@@ -9,5 +9,14 @@ defmodule Hangman.Impl.GameTest do
       assert game.game_state == :initializing
       assert length(game.letters) > 0
     end
+
+    test "should return correct word" do
+      word = "wombat"
+      game = Game.new(word)
+      assert game.letters == word |> String.codepoints()
+    end
+  end
+
+  describe "" do
   end
 end
