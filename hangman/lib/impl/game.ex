@@ -1,5 +1,5 @@
 defmodule Hangman.Impl.Game do
-  
+
   @type t :: %__MODULE__{
           turns_left: integer,
           game_state: Hangman.state(),
@@ -13,7 +13,7 @@ defmodule Hangman.Impl.Game do
     used: MapSet.new()
   )
 
-  def new_game do
+  def new do
     %__MODULE__{
       letters: Dictionary.random_word() |> String.codepoints()
     }

@@ -22,7 +22,7 @@ defmodule Hangman.MixProject do
   defp deps do
     [
       {:dictionary, path: "../dictionary"},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.1.0", only: [:dev], runtime: false}
     ]
   end
 end
