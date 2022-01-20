@@ -92,7 +92,7 @@ defmodule Hangman.Impl.GameTest do
         ["u", :bad_guess, 3, ["h", "e", "_", "_", "_"], ["a", "e", "f", "h", "u", "x"]],
         ["q", :bad_guess, 2, ["h", "e", "_", "_", "_"], ["a", "e", "f", "h", "q", "u", "x"]],
         ["t", :bad_guess, 1, ["h", "e", "_", "_", "_"], ["a", "e", "f", "h", "q", "t", "u", "x"]],
-        ["z", :lost, 0, ["h", "e", "_", "_", "_"], ["a", "e", "f", "h", "q", "t", "u", "x", "z"]]
+        ["z", :lost, 0, ["h", "e", "l", "w", "o"], ["a", "e", "f", "h", "q", "t", "u", "x", "z"]]
       ])
     end
   end
